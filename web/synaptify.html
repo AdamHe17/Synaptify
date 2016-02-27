@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+   <link rel="stylesheet" type="text/css" href="./style.css">
+   <head>
+      <script src = "./angular.min.js"></script>
+   </head>
+   
+   <body ng-app = "myapp">
+
+      <div id="header"><h1>Synaptify</h1></div>
+      
+      <div ng-controller = "HelloController" >
+         <h2>Welcome to {{helloTo.title}}!</h2>
+         <p>Enter your Name: <input type = "text" ng-model = "name"></p>
+         <p>Hello <span ng-bind = "name"></span>!</p>
+      </div> 
+      
+      <script>
+         angular.module("myapp", [])
+         
+         .controller("HelloController", function($scope) {
+            $scope.helloTo = {};
+            $scope.helloTo.title = "Synaptify";
+         });
+      </script>
+
+      <div id="footer">Created at HackTech2016 by Adam He, Dylan Ong, Eric Hao, and Max Schuman</div>
+      
+   </body>
+</html>

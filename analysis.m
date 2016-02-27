@@ -15,11 +15,11 @@ binary_image=im2bw(imread(image_path));
 
 %Small region is taken to show output clear
 binary_image = binary_image(20:120, 20:120);
-%figure;imshow(binary_image);title('Input image');
+% figure;imshow(binary_image);title('Input image');
 
 %Thinning
 thin_image=~bwmorph(binary_image,'thin',Inf);
-%figure;imshow(thin_image);title('Thinned Image');
+% figure;imshow(thin_image);title('Thinned Image');
 
 %Minutiae extraction
 s=size(thin_image);
@@ -55,7 +55,7 @@ end;
 % RIDGE END FINDING (end)
 [ridge_x, ridge_y]=find(ridge==2);
 % len=length(ridge_x);
-% %For Display
+%For Display
 % for i=1:len
 %     outImg((ridge_x(i)-3):(ridge_x(i)+3),(ridge_y(i)-3),2:3)=0;
 %     outImg((ridge_x(i)-3):(ridge_x(i)+3),(ridge_y(i)+3),2:3)=0;
