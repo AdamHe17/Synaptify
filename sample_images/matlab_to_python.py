@@ -24,7 +24,7 @@ class Parsed_Image:
 		self.ridges = r
 		self.bifurcations = b
 		self.spread = spr
-		self.ratio = float(len(r)) / len(b)
+		self.ratio = float(len(r)) / (len(r) + len(b))
 
 
 def process_image(path):
