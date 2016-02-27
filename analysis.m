@@ -30,10 +30,10 @@ c=s(2)+2*n;
 double temp(r,c);
 temp=zeros(r,c);bifurcation=zeros(r,c);ridge=zeros(r,c);
 temp((n+1):(end-n),(n+1):(end-n))=thin_image(:,:);
-outImg=zeros(r,c,3);%For Display
-outImg(:,:,1) = temp .* 255;
-outImg(:,:,2) = temp .* 255;
-outImg(:,:,3) = temp .* 255;
+% outImg=zeros(r,c,3);%For Display
+% outImg(:,:,1) = temp .* 255;
+% outImg(:,:,2) = temp .* 255;
+% outImg(:,:,3) = temp .* 255;
 for x=(n+1+10):(s(1)+n-10)
     for y=(n+1+10):(s(2)+n-10)
         e=1;
