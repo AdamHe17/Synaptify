@@ -3,16 +3,21 @@
    <link rel="stylesheet" type="text/css" href="./lib/style.css">
    <head>
       <script src = "./lib/angular.min.js"></script>
+      <script src = "./lib/generate.js"></script>
    </head>
    
-   <body ng-app = "myapp">
+   <body ng-app = "myapp" onload="upload()">
 
       <div id="header"><h1>Synaptify</h1></div>
 
       <div id="info">
-         <h4>Synaptify uses your unique fingerprint data to generate a unique audio track.</h4>
+         <h4>Synaptify uses your unique fingerprint data to generate a unique audio track.
+            <br>Upload your fingerprint '.bmp' file below.</h4>
       </div>
-      
+
+      <input type="file" id="bmpfile" name="bmp" multiple size="50" onchange="upload()" >
+
+      <p id="fileinfo"></p>
       <!-- <div ng-controller = "HelloController" >
          <h2>Welcome to {{helloTo.title}}!</h2>
          <p>Enter your Name: <input type = "text" ng-model = "name"></p>
