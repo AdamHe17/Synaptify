@@ -1,4 +1,7 @@
 
+html {
+    overflow:hidden;
+}
 @font-face {
     font-family: MonsterFriend;
     src: url("./MonsterFriend/MonsterFriendFore.otf") format("opentype");
@@ -12,6 +15,24 @@
     font-weight: bold;
     font-family: "MonsterFriend", MonsterFriend, monospace;
     font-size: 20pt;
+    /*position:absolute;*/
+    width:100%;
+    margin-left:0;
+    left:0px;
+    margin:0;
+    top:0;
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px; 
+    width:100%;
+    position:absolute;
+    bottom:0;
+    left:0;
+    font-family: "Courier New", Courier, monospace;
 }
 body {
     text-align:center;
@@ -45,20 +66,6 @@ a {
     list-style-image: url('./note.jpeg');
     border: double;
     width:50%;
-}
-#footer {
-    background-color:black;
-    color:white;
-    clear:both;
-    text-align:center;
-    padding:5px; 
-
-
-    width:98%;
-    position:absolute;
-    bottom:0;
-    left:.5%;
-    font-family: "Courier New", Courier, monospace;
 }
 button {
     background-color: white; 
