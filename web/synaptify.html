@@ -1,19 +1,23 @@
 <!doctype html>
 <html>
-   <link rel="stylesheet" type="text/css" href="./style.css">
+   <link rel="stylesheet" type="text/css" href="./lib/style.css">
    <head>
-      <script src = "./angular.min.js"></script>
+      <script src = "./lib/angular.min.js"></script>
    </head>
    
    <body ng-app = "myapp">
 
       <div id="header"><h1>Synaptify</h1></div>
+
+      <div id="info">
+         <h4>Synaptify uses your unique fingerprint data to generate a unique audio track.</h4>
+      </div>
       
-      <div ng-controller = "HelloController" >
+      <!-- <div ng-controller = "HelloController" >
          <h2>Welcome to {{helloTo.title}}!</h2>
          <p>Enter your Name: <input type = "text" ng-model = "name"></p>
          <p>Hello <span ng-bind = "name"></span>!</p>
-      </div> 
+      </div>  -->
       
       <script>
          angular.module("myapp", [])
@@ -22,9 +26,23 @@
             $scope.helloTo = {};
             $scope.helloTo.title = "Synaptify";
          });
+
+         app.controller('AppController', function ($scope) {
+         $scope.toggle = true;
+
+         $scope.$watch('toggle', function(){
+         $scope.toggleText = $scope.toggle ? 'Toggle!' : 'some text';
+         })
+         })
       </script>
 
-      <div id="footer">Created at HackTech2016 by Adam He, Dylan Ong, Eric Hao, and Max Schuman</div>
+      <div id="footer">
+      <button ng-click="toggle = !toggle">Created at HackTech2016</button>
+         <div class="box on" ng-show="toggle" ng-animate="'box'">
+            <p><b>By Adam He, Dylan Ong, Eric Hao, and Max Schuman:<b><br>
+            <a href="https://github.com/AdamHe17/Synaptify"><img src="./lib/github.png" height="10%" width="10%"/></a></p>
+         </div>
+      </div>
       
    </body>
 </html>
