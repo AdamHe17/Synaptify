@@ -4,6 +4,7 @@
    <head>
       <script src = "./lib/angular.min.js"></script>
       <script src = "./lib/generate.js"></script>
+      <script type='text/javascript' src='http://www.midijs.net/lib/midi.js'></script>
    </head>
    
    <body ng-app = "myapp" onload="upload()">
@@ -18,6 +19,10 @@
       <input type="file" id="bmpfile" name="bmp" multiple size="50" onchange="upload()" >
 
       <p id="fileinfo"></p>
+      <div id="play">
+         <a href="#example" onClick="MIDIjs.play('http://www.filedropper.com/identify2016-02-2621-05-3200');">Play sample</a>
+         <a href="#example" onClick="MIDIjs.stop();">Stop MIDI Playback</a>
+      </div>
       <!-- <div ng-controller = "HelloController" >
          <h2>Welcome to {{helloTo.title}}!</h2>
          <p>Enter your Name: <input type = "text" ng-model = "name"></p>
@@ -25,27 +30,25 @@
       </div>  -->
       
       <script>
-         angular.module("myapp", [])
-         
-         .controller("HelloController", function($scope) {
+         angular.module("myapp", []).controller("HelloController", function($scope) {
             $scope.helloTo = {};
             $scope.helloTo.title = "Synaptify";
          });
 
-         app.controller('AppController', function ($scope) {
+         angular.module("myapp", []).controller('AppController', function($scope) {
          $scope.toggle = true;
-
          $scope.$watch('toggle', function(){
          $scope.toggleText = $scope.toggle ? 'Toggle!' : 'some text';
          })
          })
       </script>
 
+
       <div id="footer">
       <button ng-click="toggle = !toggle">Created at HackTech2016</button>
          <div class="box on" ng-show="toggle" ng-animate="'box'">
             <p><b>By Adam He, Dylan Ong, Eric Hao, and Max Schuman:<b><br>
-            <a href="https://github.com/AdamHe17/Synaptify"><img src="./lib/github.png" height="10%" width="10%"/></a></p>
+            <a href="https://github.com/AdamHe17/Synaptify" color="white"><img src="./lib/github.png" height="10%" width="10%"/></a></p>
          </div>
       </div>
       
