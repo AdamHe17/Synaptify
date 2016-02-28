@@ -67,7 +67,6 @@ a {
     display: inline-block;
     text-align:left;
     list-style-image: url('./note.jpeg');
-    border: double;
     width:50%;
 }
 button {
