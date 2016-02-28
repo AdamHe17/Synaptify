@@ -16,6 +16,7 @@ function upload(){
                 // }
 
                 //RUN SCRIPT AND GENERATE MIDI FILE
+                convert(x.files[i])
             }
         }
     } 
@@ -30,3 +31,6 @@ function upload(){
     document.getElementById("fileinfo").innerHTML = txt;
 }
 
+function convert(f) {
+    
+}

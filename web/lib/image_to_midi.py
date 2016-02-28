@@ -1154,5 +1154,5 @@ def make_MIDI(parsed_image, output_path):
 
     open_file.close()
 
-x = mtp.process_image('sample_images\enroll_2016-02-27_22-08-13_00.bmp')
-make_MIDI(x, 'C:/Users/ah299_000/Documents/GitHub/Synaptify/sample_outputs/enroll_2016-02-27_22-08-13_00.mid')
+x = mtp.process_image('./midi/identify_2016-02-26_20-37-59_00.bmp')
+make_MIDI(x, './midi/fingerprint.mid')
