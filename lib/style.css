@@ -57,18 +57,27 @@ a {
 #instructions {
     text-align:center;
     padding:10px;
-    font-size:14pt;
+    font-size:18pt;
 }
 #info {
-    text-align:center;
+    text-align:left;
     margin:0 auto;
+    padding-top: 40px;
     width:50%;
+    font-size: 16px;
+}
+#info h4 {
+    font-size:20px;
+
 }
 #info ul {
     display: inline-block;
-    text-align:left;
     list-style-image: url('./note.png');
-    width:50%;
+    padding-left: 160px;
+    padding-top: 15px;
+}
+#info p {
+    font-size:16px;
 }
 button {
     background-color: white; 
