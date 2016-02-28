@@ -39,7 +39,7 @@ def filter_list(lst):
 
 def process_image(path):
 	eng = matlab.engine.start_matlab()
-	eng.cd(r'C:\Users\ah299_000\Documents\GitHub\Synaptify')
+	eng.cd(r'C:\Users\Admin\Documents\GitHub\Synaptify')
 	outputs = eng.analysis(path, nargout=4)
 
 	ridges, bifurcations = [], []

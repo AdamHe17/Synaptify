@@ -1115,6 +1115,10 @@ def set_note_length(point):
 def sort_by_x(my_arr):
     return sorted(my_arr, key=itemgetter(1))
 
+def set_instrument(my_arr):
+    instruments = [15, 43, 42, 17, 67, 74, 24, 80, 57, 16, 7, 11, 8, 70, 63, 20, 41, 28, 71, 68, 22, 58, 12, 73, 5, 9, 47, 110, 72, 27, 75, 10, 106, 4, 66, 23, 89, 53, 105, 79, 61, 81, 69, 65]
+    return instruments[len(my_arr) % len(instruments)]
+
 #MIDI file generator method
 def make_MIDI(parsed_image, output_path):
     my_midi = MIDIFile(2)
@@ -1156,5 +1160,5 @@ def make_MIDI(parsed_image, output_path):
 
     open_file.close()
 
-x = mtp.process_image('sample_images\enroll_2016-02-27_22-08-13_00.bmp')
-make_MIDI(x, 'C:/Users/ah299_000/Documents/GitHub/Synaptify/sample_outputs/enroll_2016-02-27_22-08-13_00.mid')
+x = mtp.process_image('sample_images\identify_2016-02-26_20-37-59_00.bmp')
+make_MIDI(x, 'C:/Users/Admin/Documents/GitHub/Synaptify/sample_outputs/identify_2016-02-26_20-37-59_00.mid')
