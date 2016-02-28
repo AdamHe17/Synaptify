@@ -16,7 +16,7 @@ function upload(){
                 // }
 
                 //STORE FILE
-                localStorage.setItem("fingerprint.mid",5);
+                localStorage.setItem("fingerprint1.bmp",5);
                 console.log("idk");
             }
         }

@@ -1154,5 +1154,5 @@ def make_MIDI(parsed_image, output_path):
 
     open_file.close()
 
-x = mtp.process_image('./midi/identify_2016-02-26_20-37-59_00.bmp')
+x = mtp.process_image('./midi/fingerprint.bmp')
 make_MIDI(x, './midi/fingerprint.mid')
