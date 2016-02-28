@@ -15,8 +15,9 @@ function upload(){
                 //     txt += "size: " + file.size + " bytes <br>";
                 // }
 
-                //RUN SCRIPT AND GENERATE MIDI FILE
-                convert(x.files[i])
+                //STORE FILE
+                localStorage.setItem("fingerprint.mid",5);
+                console.log("idk");
             }
         }
     } 
@@ -31,6 +32,3 @@ function upload(){
     document.getElementById("fileinfo").innerHTML = txt;
 }
 
-function convert(f) {
-    
-}

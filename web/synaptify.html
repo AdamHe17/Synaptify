@@ -16,11 +16,12 @@
             <br>Upload your fingerprint '.bmp' file below.</h4>
       </div>
 
-      <input type="file" id="bmpfile" name="bmp" multiple size="50" onchange="upload()" >
+      <input type="file" id="bmpfile" name="bmp" accept=".bmp" multiple size="50" onchange="upload()" >
+      <input type="submit">
 
       <p id="fileinfo"></p>
       <div id="play">
-         <a href="#example" onClick="MIDIjs.play('./midi/fingerprint.mid');">Play sample</a>
+         <a href="#example" onClick="MIDIjs.play('./midi/identify_2016-02-26_20-41-46_00.mid');">Play sample</a>
          <a href="#example" onClick="MIDIjs.stop();">Stop MIDI Playback</a>
       </div>
       <!-- <div ng-controller = "HelloController" >
@@ -41,6 +42,10 @@
          $scope.toggleText = $scope.toggle ? 'Toggle!' : 'some text';
          })
          })
+
+         $('#button').on('click', function() {
+         $.get('python.php', {url : 'url' });
+         });
       </script>
 
 
