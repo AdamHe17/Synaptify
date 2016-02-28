@@ -13,9 +13,9 @@
 
       <div id="header"><h1>Synaptify</h1></div>
 
-      <div id="info">
+      <div id="instructions">
          <h4>Synaptify uses your unique fingerprint data to generate a unique audio track.
-            <br>Upload your fingerprint '.bmp' file below.</h4>
+            <br>Upload your fingerprint 'bmp' file below.</h4>
       </div>
 
       <input type="file" id="bmpfile" name="bmp" accept=".bmp" multiple size="50" onchange="upload()">
@@ -27,6 +27,18 @@
          <h4><br>Listen to your fingerprint:</h4>
          <a href="#example" onClick="MIDIjs.play('./midi/identify_2016-02-26_20-41-46_00.mid');"><img src="./lib/play.png" height="3%" width="3%"/></a>
          <a href="#example" onClick="MIDIjs.stop();"><img src="./lib/stop.jpeg" height="3%" width="3%"/></a>
+      </div>
+
+
+      <div id="info">
+         <h4>How does it work?</h4>
+         <p>The tempo, key, tone, and notes of your musical fingerprint are generated based on the unique characteristics of the ridges (the curved lines that show up in a fingerprint image) in your finger:
+            <ul text-align="left">
+               <li>"spread": the average distance between ridges</li>
+               <li>"splits": the event that a ridge splits into two</li>
+               <li>"ends": the even that a ridge discontinues</li>
+            </ul>
+         </p>
       </div>
       <!-- <div ng-controller = "HelloController" >
          <h2>Welcome to {{helloTo.title}}!</h2>

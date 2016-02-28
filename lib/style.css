@@ -30,9 +30,21 @@ a {
     font-size: 16px;
     font-family: "Times New Roman", Times, serif;
 }
-#info {
+#instructions {
     text-align:center;
     padding:10px;
+}
+#info {
+    text-align:center;
+    margin:0 auto;
+    width:50%;
+}
+#info ul {
+    display: inline-block;
+    text-align:left;
+    list-style-image: url('./note.jpeg');
+    border: double;
+    width:50%;
 }
 #footer {
     background-color:black;
