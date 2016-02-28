@@ -57,6 +57,7 @@ a {
 #instructions {
     text-align:center;
     padding:10px;
+    font-size:14pt;
 }
 #info {
     text-align:center;
@@ -66,7 +67,7 @@ a {
 #info ul {
     display: inline-block;
     text-align:left;
-    list-style-image: url('./note.jpeg');
+    list-style-image: url('./note.png');
     width:50%;
 }
 button {
