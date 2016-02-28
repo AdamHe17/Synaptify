@@ -15,12 +15,15 @@ html {
     font-weight: bold;
     font-family: "MonsterFriend", MonsterFriend, monospace;
     font-size: 20pt;
-    /*position:absolute;*/
+    position:absolute;
     width:100%;
     margin-left:0;
     left:0px;
     margin:0;
     top:0;
+}
+#spacer {
+    font-size:80pt;
 }
 #footer {
     background-color:black;
