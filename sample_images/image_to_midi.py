@@ -1116,7 +1116,9 @@ def set_note_length(point):
 	note_lengths = [1./2, 1, 2, 4]
 	return note_lengths[int(point[0] + point[1]) % 4]
 
-
+def set_instrument(my_arr):
+	instruments = [1, 4, 5, 7, 8, 9, 10, 11, 12, 15, 16, 17, 20, 21, 22, 23, 24, 27, 28, 33, 34, 41, 42, 45, 47, 49, 51, 53, 54, 57, 58, 59, 61, 63, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 89, 106, 107, 110]
+	return instruments[(len(my_arr) % len(instruments))]
 
 def compute_spread(points):
     x_ave = 0
@@ -1161,14 +1163,12 @@ def process_image(path):
 	elif len(bifurcations) != 0:
 		minutiae = bifurcations
 
-	print compute_spread(minutiae)
-
 	data = Parsed_Image(ridges, bifurcations, compute_spread(minutiae))
 
 	return data;
 
-x = process_image('sample_images\identify_2016-02-26_21-05-32_00.bmp')
-print x.spread
+x = process_image('sample_images\identify_2016-02-26_22-56-18_00.bmp')
+
 
 def sort_by_x(my_arr):
 	return sorted(my_arr, key=itemgetter(1))
@@ -1178,6 +1178,8 @@ def make_MIDI(parsed_image, output_path):
 	my_midi = MIDIFile(2)
 	my_midi.addTempo(0, 0, decide_tempo(parsed_image.spread))
 	my_midi.addTempo(1, 0, decide_tempo(parsed_image.spread))
+	my_midi.addProgramChange(1, 1, 0, 1)
+	my_midi.addProgramChange(0, 0, 0, set_instrument(parsed_image.bifurcations))
 
 	parsed_image.ridges = sort_by_x(parsed_image.ridges)
 	parsed_image.bifurcations = sort_by_x(parsed_image.bifurcations)
@@ -1203,7 +1205,7 @@ def make_MIDI(parsed_image, output_path):
 	time_run = 0
 
 	for j in range(0, len(bifurcation_freqs_final)):
-		my_midi.addNote(1, 0, freq2midi(bifurcation_freqs_final[j]), time_run, set_note_length(parsed_image.bifurcations[j]), 64)
+		my_midi.addNote(1, 1, freq2midi(bifurcation_freqs_final[j]), time_run, set_note_length(parsed_image.bifurcations[j]), 64)
 		time_run += set_note_length(parsed_image.bifurcations[j])
 
 	open_file = open(output_path, 'w')
@@ -1212,7 +1214,7 @@ def make_MIDI(parsed_image, output_path):
 
 	open_file.close()
 
-make_MIDI(x, 'C:\Users\Admin\Documents\GitHub\Synaptify\sample_outputs\identify_2016-02-26_21-05-32_00.mid')
+make_MIDI(x, 'C:\Users\Admin\Documents\GitHub\Synaptify\sample_outputs\identify_2016-02-26_22-56-18_00.mid')
 
 
 
