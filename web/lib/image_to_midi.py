@@ -1106,53 +1106,53 @@ def freq2midi(freq):
   return nan if isinstance(result, complex) else result
 
 def decide_tempo(spread):
-	return 60 + (220/8) * (spread-27)
+    return 60 + (220/8) * (spread-27)
 
 def set_note_length(point):
-	note_lengths = [1./2, 1, 2, 4]
-	return note_lengths[int(point[0] + point[1]) % 4]
+    note_lengths = [1./2, 1, 2, 4]
+    return note_lengths[int(point[0] + point[1]) % 4]
 
 def sort_by_x(my_arr):
-	return sorted(my_arr, key=itemgetter(1))
+    return sorted(my_arr, key=itemgetter(1))
 
 #MIDI file generator method
 def make_MIDI(parsed_image, output_path):
-	my_midi = MIDIFile(2)
-	my_midi.addTempo(0, 0, decide_tempo(parsed_image.spread))
-	my_midi.addTempo(1, 0, decide_tempo(parsed_image.spread))
+    my_midi = MIDIFile(2)
+    my_midi.addTempo(0, 0, decide_tempo(parsed_image.spread))
+    my_midi.addTempo(1, 0, decide_tempo(parsed_image.spread))
 
-	parsed_image.ridges = sort_by_x(parsed_image.ridges)
-	parsed_image.bifurcations = sort_by_x(parsed_image.bifurcations)
+    parsed_image.ridges = sort_by_x(parsed_image.ridges)
+    parsed_image.bifurcations = sort_by_x(parsed_image.bifurcations)
 
-	time_run = 0
-	ridge_indices = get_points_144(parsed_image.ridges)
-	bifurcation_indices = get_points_144(parsed_image.bifurcations)
+    time_run = 0
+    ridge_indices = get_points_144(parsed_image.ridges)
+    bifurcation_indices = get_points_144(parsed_image.bifurcations)
 
-	ridge_freqs_raw = map_to_piano(ridge_indices)
-	bifurcation_freqs_raw = map_to_piano(bifurcation_indices)
+    ridge_freqs_raw = map_to_piano(ridge_indices)
+    bifurcation_freqs_raw = map_to_piano(bifurcation_indices)
 
-	ridge_freqs_C = map_to_C_scale(ridge_freqs_raw)
-	bifurcation_freqs_C = map_to_C_scale(bifurcation_freqs_raw)
+    ridge_freqs_C = map_to_C_scale(ridge_freqs_raw)
+    bifurcation_freqs_C = map_to_C_scale(bifurcation_freqs_raw)
 
-	ridge_freqs_final = change_scale(ridge_freqs_C, parsed_image.ratio)
-	bifurcation_freqs_final = change_scale(bifurcation_freqs_C, parsed_image.ratio)
+    ridge_freqs_final = change_scale(ridge_freqs_C, parsed_image.ratio)
+    bifurcation_freqs_final = change_scale(bifurcation_freqs_C, parsed_image.ratio)
 
 
-	for i in range(0, len(ridge_freqs_final)):
-		my_midi.addNote(0, 0, freq2midi(ridge_freqs_final[i]), time_run, set_note_length(parsed_image.ridges[i]), 64)
-		time_run += set_note_length(parsed_image.ridges[i])
+    for i in range(0, len(ridge_freqs_final)):
+        my_midi.addNote(0, 0, freq2midi(ridge_freqs_final[i]), time_run, set_note_length(parsed_image.ridges[i]), 64)
+        time_run += set_note_length(parsed_image.ridges[i])
 
-	time_run = 0
+    time_run = 0
 
-	for j in range(0, len(bifurcation_freqs_final)):
-		my_midi.addNote(1, 0, freq2midi(bifurcation_freqs_final[j]), time_run, set_note_length(parsed_image.bifurcations[j]), 64)
-		time_run += set_note_length(parsed_image.bifurcations[j])
+    for j in range(0, len(bifurcation_freqs_final)):
+        my_midi.addNote(1, 0, freq2midi(bifurcation_freqs_final[j]), time_run, set_note_length(parsed_image.bifurcations[j]), 64)
+        time_run += set_note_length(parsed_image.bifurcations[j])
 
-	open_file = open(output_path, 'w')
+    open_file = open(output_path, 'w')
 
-	my_midi.writeFile(open_file);
+    my_midi.writeFile(open_file);
 
-	open_file.close()
+    open_file.close()
 
 x = mtp.process_image('sample_images\enroll_2016-02-27_22-08-13_00.bmp')
 make_MIDI(x, 'C:/Users/ah299_000/Documents/GitHub/Synaptify/sample_outputs/enroll_2016-02-27_22-08-13_00.mid')
