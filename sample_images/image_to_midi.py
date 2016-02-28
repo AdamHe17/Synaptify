@@ -1113,8 +1113,8 @@ def decide_tempo(spread):
 	return 60 + (220/8) * (spread-27)
 
 def set_note_length(point):
-	note_lengths = [1./4, 1./2, 1, 2, 4]
-	return note_lengths[int(point[0] + point[1]) % 5]
+	note_lengths = [1./2, 1, 2, 4]
+	return note_lengths[int(point[0] + point[1]) % 4]
 
 
 
@@ -1167,11 +1167,11 @@ def process_image(path):
 
 	return data;
 
-x = process_image('sample_images\identify_2016-02-26_22-56-18_00.bmp')
+x = process_image('sample_images\identify_2016-02-26_21-05-32_00.bmp')
 print x.spread
 
 def sort_by_x(my_arr):
-	return sorted(my_arr, key=itemgetter(0))
+	return sorted(my_arr, key=itemgetter(1))
 
 #MIDI file generator method
 def make_MIDI(parsed_image, output_path):
@@ -1212,7 +1212,7 @@ def make_MIDI(parsed_image, output_path):
 
 	open_file.close()
 
-make_MIDI(x, 'C:\Users\Admin\Documents\GitHub\Synaptify\sample_outputs\identify_2016-02-26_22-56-18_00.mid')
+make_MIDI(x, 'C:\Users\Admin\Documents\GitHub\Synaptify\sample_outputs\identify_2016-02-26_21-05-32_00.mid')
 
 
 
