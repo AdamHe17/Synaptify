@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/index.css') }}">
+   <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+      <script type='text/javascript' src='http://www.midijs.net/lib/midi.js'></script>
+      <script type="text/javascript" src="{{ url_for('static',filename='scripts/retract_footer.js') }}"></script>
+      <title>Synaptify</title>
+   </head>
+   
+   <body>
+
+      <div id="header"><h1>Synaptify<img src="{{ url_for('static',filename='images/pixelnote.png') }}" height="4.7%" width="4.7%" position="relative"/></h1></div>
+
+      <div id="spacer"><h1></h1></div>
+
+      <div id="instructions">
+         <h4>Make a unique song with your fingerprint!</h4>
+         <p>Upload your "bmp" file:</p>
+      </div>
+
+      <form id="myform" action="play.py" method="post">
+         <input type="file" id="bmpfile" name="bmp" accept=".bmp" multiple size="50">
+         <input type="submit" value="Submit">
+      </form>
+
+
+      <p id="fileinfo"></p>
+      <div id="play">
+         <h4><br>Listen to your fingerprint:</h4>
+         <a href="#play" onClick="MIDIjs.play('../static/sounds/identify_2016-02-26_20-41-46_00.mid');"><img src="{{ url_for('static',filename='images/play.png') }}" height="5%" width="5%"/></a>
+         <a href="#stop" onClick="MIDIjs.stop();"><img src="{{ url_for('static',filename='images/stop.png') }}" height="5.8%" width="5.8%"/></a>
+      </div>
+
+
+      <div id="info">
+         <p>Pitch, key, rhythm, and tempo are based on characteristics of your fingerprint ridges:
+            <ul text-align="left">
+               <li>"spread": the distance between ridges</li>
+               <li>"splits": a ridge splits into two</li>
+               <li>"ends": a ridge discontinues</li>
+            </ul>
+         </p>
+      </div>
+
+      <div id="footer">
+      <button onclick="retract_footer()">Created at HackTech2016</button>
+         <div id="footer_info" class="box_off">
+            <p><b>By Adam He, Dylan Ong, Eric Hao, and Max Schuman:<b><br>
+            <a href="https://github.com/AdamHe17/Synaptify" color="white"><img src="{{ url_for('static',filename='images/github.png') }}" height="10%" width="10%"/></a></p>
+         </div>
+      </div>
+      
+   </body>
+</html>

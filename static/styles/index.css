@@ -4,7 +4,7 @@ html {
 }
 @font-face {
     font-family: MonsterFriend;
-    src: url("./MonsterFriend/MonsterFriendFore.otf") format("opentype");
+    src: url("../fonts/MonsterFriendFore.otf") format("opentype");
 }
 
 #header {
@@ -72,7 +72,7 @@ h4 {
 }
 #info ul {
     display: inline-block;
-    list-style-image: url('./note.png');
+    list-style-image: url('../images/note.png');
     text-align: left;
 }
 #info p {
@@ -91,3 +91,7 @@ button {
     font-weight:bold;
 }
 
+.box_off{
+    display:none;
+    height:0px;
+}

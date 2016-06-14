@@ -1115,11 +1115,17 @@ def set_note_length(point):
 def sort_by_x(my_arr):
     return sorted(my_arr, key=itemgetter(1))
 
+def set_instrument(my_arr):
+    instruments = [15, 43, 42, 17, 67, 74, 24, 80, 57, 16, 7, 11, 8, 70, 63, 20, 41, 28, 71, 68, 22, 58, 12, 73, 5, 9, 47, 110, 72, 27, 75, 10, 106, 4, 66, 23, 89, 53, 105, 79, 61, 81, 69, 65]
+    return instruments[len(my_arr) % len(instruments)]
+
 #MIDI file generator method
 def make_MIDI(parsed_image, output_path):
     my_midi = MIDIFile(2)
     my_midi.addTempo(0, 0, decide_tempo(parsed_image.spread))
     my_midi.addTempo(1, 0, decide_tempo(parsed_image.spread))
+    my_midi.addProgramChange(1, 1, 0, 1)
+    my_midi.addProgramChange(0, 0, 0, set_instrument(parsed_image.bifurcations))
 
     parsed_image.ridges = sort_by_x(parsed_image.ridges)
     parsed_image.bifurcations = sort_by_x(parsed_image.bifurcations)
@@ -1139,7 +1145,7 @@ def make_MIDI(parsed_image, output_path):
 
 
     for i in range(0, len(ridge_freqs_final)):
-        my_midi.addNote(0, 0, freq2midi(ridge_freqs_final[i]), time_run, set_note_length(parsed_image.ridges[i]), 64)
+        my_midi.addNote(0, 1, freq2midi(ridge_freqs_final[i]), time_run, set_note_length(parsed_image.ridges[i]), 64)
         time_run += set_note_length(parsed_image.ridges[i])
 
     time_run = 0
@@ -1154,5 +1160,3 @@ def make_MIDI(parsed_image, output_path):
 
     open_file.close()
 
-x = mtp.process_image('./midi/fingerprint.bmp')
-make_MIDI(x, './midi/fingerprint.mid')
