@@ -1151,7 +1151,7 @@ def make_MIDI(parsed_image, output_path):
     time_run = 0
 
     for j in range(0, len(bifurcation_freqs_final)):
-        my_midi.addNote(1, 0, freq2midi(bifurcation_freqs_final[j]), time_run, set_note_length(parsed_image.bifurcations[j]), 64)
+        my_midi.addNote(1, 1, freq2midi(bifurcation_freqs_final[j]), time_run, set_note_length(parsed_image.bifurcations[j]), 64)
         time_run += set_note_length(parsed_image.bifurcations[j])
 
     open_file = open(output_path, 'w')
@@ -1159,4 +1159,3 @@ def make_MIDI(parsed_image, output_path):
     my_midi.writeFile(open_file);
 
     open_file.close()
-

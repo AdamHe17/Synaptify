@@ -39,7 +39,7 @@ def filter_list(lst):
 
 def process_image(path):
 	eng = matlab.engine.start_matlab()
-	eng.cd(r'C:\\Images\\Fingerprint Images')
+
 	outputs = eng.analysis(path, nargout=4)
 
 	ridges, bifurcations = [], []
