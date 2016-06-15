@@ -1,8 +1,6 @@
 from __future__ import division
 from operator import itemgetter
-import matlab.engine
 import math
-import numpy
 import matlab_to_python as mtp
 from midi import *
 
