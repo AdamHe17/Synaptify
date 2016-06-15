@@ -15,14 +15,15 @@
       <div id="spacer"><h1></h1></div>
 
       <div id="instructions">
-         <h4>Make a unique song with your fingerprint!</h4>
-         <p>Upload your "bmp" file:</p>
+         <h4>You made a unique song with your fingerprint!</h4>
       </div>
 
-      <form id="myform" method="post" enctype="multipart/form-data">
-         <input type="file" id="bmpfile" name="bmp" accept=".bmp" multiple size="50">
-         <input type="submit" value="Submit">
-      </form>
+      <p id="fileinfo"></p>
+      <div id="play">
+         <h4><br>Listen to your fingerprint:</h4>
+         <a href="#play" onClick="MIDIjs.play('{{ url_for('static', filename=filepath) }}');"><img src="{{ url_for('static',filename='images/play.png') }}" height="5%" width="5%"/></a>
+         <a href="#stop" onClick="MIDIjs.stop();"><img src="{{ url_for('static',filename='images/stop.png') }}" height="5.8%" width="5.8%"/></a>
+      </div>
 
 
       <div id="info">

@@ -78,7 +78,10 @@ def set_instrument(my_arr):
     return instruments[len(my_arr) % len(instruments)]
 
 #MIDI file generator method
-def make_MIDI(parsed_image, output_path):
+def make_MIDI(input_path, output_path):
+    parsed_image = mtp.process_image(input_path)
+    print parsed_image
+
     my_midi = MIDIFile(2)
     my_midi.addTempo(0, 0, decide_tempo(parsed_image.spread))
     my_midi.addTempo(1, 0, decide_tempo(parsed_image.spread))

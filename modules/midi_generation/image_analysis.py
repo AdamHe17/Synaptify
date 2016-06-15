@@ -86,7 +86,6 @@ def analysis(image_path):
 				bifurcation[x][y] = sum(map(sum, mat))
 			mat = [[0 for j in range(3)] for i in range(3)]
 
-	print ridge, bifurcation
 	ridge_x = []
 	ridge_y = []
 	bifurcation_x =[]
@@ -102,6 +101,3 @@ def analysis(image_path):
 				bifurcation_y.append(j)
 
 	return ridge_x, ridge_y, bifurcation_x, bifurcation_y
-
-
-print analysis("sample.bmp")
