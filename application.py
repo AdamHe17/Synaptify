@@ -1,5 +1,5 @@
 import os, sys, tempfile
-sys.path.append('modules/midi_generation')
+
 import image_to_midi as im
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
